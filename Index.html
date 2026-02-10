@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You Aditi Didi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Splash Screen */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #4b6cb7, #182848);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease;
+        }
+
+        .splash-content {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .splash-title {
+            font-size: 3.5rem;
+            font-family: 'Dancing Script', cursive;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .thankyou-note {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .splash-subtitle {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+
+        .splash-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .enter-button, .achievement-button {
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            font-weight: 600;
+        }
+
+        .enter-button {
+            background: #ff7e5f;
+        }
+
+        .enter-button:hover {
+            background: #ff6b47;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .achievement-button {
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+        }
+
+        .achievement-button:hover {
+            background: linear-gradient(to right, #45a049, #1B5E20);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Blowing effect */
+        .blow-effect {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: blow 0.6s ease-out forwards;
+        }
+
+        @keyframes blow {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            display: none;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        .name-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .name-section:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border: 2px solid #4CAF50;
+            transform: translateY(-5px);
+        }
+
+        /* Green glow effect on hover */
+        .green-glow {
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.7) !important;
+            border-color: #4CAF50 !important;
+        }
+
+        .name {
+            font-size: 2.8rem;
+            color: #4b6cb7;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Caveat', cursive;
+        }
+
+        .meaning {
+            font-size: 1.3rem;
+            color: #5a6c7d;
+            font-style: italic;
+        }
+
+        .poem-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border-left: 8px solid #4b6cb7;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .poem-container:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border: 2px solid #4CAF50;
+        }
+
+        .poem-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .poem {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: center;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .poem p {
+            margin-bottom: 20px;
+        }
+
+        .action-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .click-me-button {
+            padding: 18px 50px;
+            font-size: 1.5rem;
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .click-me-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #5a7bc9, #24375e);
+        }
+
+        /* Final Request Button */
+        .final-request-btn {
+            padding: 18px 50px;
+            font-size: 1.5rem;
+            background: linear-gradient(to right, #FF5722, #D84315);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .final-request-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #FF7043, #E64A19);
+        }
+
+        /* Modal Styles - Square and Scrollable */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            animation: modalAppear 0.5s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes modalAppear {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            font-size: 2.5rem;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .handwriting {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            text-align: center;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+            flex-shrink: 0;
+        }
+
+        .close-btn, .close-btn-2, .close-btn-3, .close-btn-4 {
+            padding: 12px 30px;
+            background: #4b6cb7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover, .close-btn-2:hover, .close-btn-3:hover, .close-btn-4:hover {
+            background: #3a5ba0;
+            transform: translateY(-2px);
+        }
+
+        .open-second-modal, .final-yes-button {
+            padding: 15px 40px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .open-second-modal:hover, .final-yes-button:hover {
+            background: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Achievement Modal Styles */
+        .awards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .award-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .award-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: #4CAF50;
+        }
+
+        .award-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            height: 80px;
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .award-1 .award-icon {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+        }
+
+        .award-2 .award-icon {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+        }
+
+        .award-3 .award-icon {
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+            color: white;
+        }
+
+        .award-4 .award-icon {
+            background: linear-gradient(135deg, #9C27B0, #6A1B9A);
+            color: white;
+        }
+
+        .award-5 .award-icon {
+            background: linear-gradient(135deg, #FF5722, #D84315);
+            color: white;
+        }
+
+        .award-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .award-desc {
+            font-size: 1rem;
+            color: #5a6c7d;
+            line-height: 1.5;
+        }
+
+        .achievement-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .achievement-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Final Request Modal Styles */
+        .final-request-modal .modal-header {
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+        }
+
+        .plea-container {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #4CAF50;
+        }
+
+        .plea-text {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .highlight {
+            color: #4b6cb7;
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+
+        .promise-list {
+            list-style-type: none;
+            margin: 25px 0;
+            padding: 0;
+        }
+
+        .promise-list li {
+            padding: 12px 0;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.2rem;
+            color: #444;
+        }
+
+        .promise-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 10px;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .heart {
+            color: #ff4757;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            5% { transform: scale(1.2); }
+            10% { transform: scale(1.1); }
+            15% { transform: scale(1.3); }
+            50% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Container for blowing effect */
+        .blow-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .splash-title {
+                font-size: 2.5rem;
+            }
+            
+            .thankyou-note {
+                font-size: 1.2rem;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .name {
+                font-size: 2.2rem;
+            }
+            
+            .poem {
+                font-size: 1.1rem;
+            }
+            
+            .click-me-button, .open-second-modal, .final-request-btn {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+            }
+            
+            .modal-content {
+                max-height: 90vh;
+            }
+            
+            .handwriting {
+                font-size: 1.5rem;
+            }
+            
+            .awards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .splash-buttons {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-content">
+            <h1 class="splash-title">Thank You Didi</h1>
+            <p class="thankyou-note">For teaching me Science and Mathematics with so much patience and care.</p>
+            <p class="thankyou-note">You're not just my tuition teacher, you're my guide, my mentor, and my didi.</p>
+            <h2 class="splash-subtitle">A heartfelt tribute to Aditi Didi</h2>
+            
+            <div class="splash-buttons">
+                <button class="enter-button" id="enterBtn">
+                    Enter Tribute
+                </button>
+                <button class="achievement-button" id="achievementBtn">
+                    <i class="fas fa-trophy"></i> Click to see Your Achievements
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <div class="header">
+            <h1 class="title">A Tribute to My Respected Didi</h1>
+            <p class="subtitle">For the best tuition teacher I could ever ask for</p>
+        </div>
+        
+        <div class="name-section blow-container" id="nameSection">
+            <h2 class="name">Aditi Rawat</h2>
+            <p class="meaning">Name meaning: "Freedom, boundless, limitless" - and that's exactly how you've made my learning journey</p>
+        </div>
+        
+        <div class="poem-container blow-container" id="poemContainer">
+            <h3 class="poem-title">To My Respected Didi</h3>
+            <div class="poem">
+                <p>You entered my life when confusion was all I knew,</p>
+                <p>With equations and theories that seemed all askew.</p>
+                <p>But with patience and care, you lit up the way,</p>
+                <p>Turning confusing nights into learning's bright day.</p>
+                <br>
+                <p>You taught me that Science is more than just facts,</p>
+                <p>And Mathematics is logic where nothing just "acts".</p>
+                <p>You gave me the confidence when I had doubts and fears,</p>
+                <p>And wiped away all of my frustrated tears.</p>
+                <br>
+                <p>I regret not gifting you on birthdays past,</p>
+                <p>But I hope this small tribute will forever last.</p>
+                <p>For you're more than a teacher, you're family to me,</p>
+                <p>The best didi a student could ever hope to see.</p>
+                <br>
+                <p>With deepest gratitude,</p>
+                <p>Your student who will always remember you</p>
+            </div>
+        </div>
+        
+        <div class="action-section">
+            <button class="click-me-button" id="clickMeBtn">
+                <i class="fas fa-gift"></i> Click Me Didi
+            </button>
+            <br>
+            <button class="final-request-btn" id="finalRequestBtn">
+                <i class="fas fa-hands-praying"></i> My Final Heartfelt Request
+            </button>
+        </div>
+        
+        <div class="footer">
+            <p>Created with <i class="fas fa-heart heart"></i> by your student</p>
+            <p>This is my humble attempt to express what words often fail to convey</p>
+        </div>
+    </div>
+
+    <!-- First Modal -->
+    <div class="modal" id="firstModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Didi, Thank You <i class="fas fa-heart"></i></h2>
+            </div>
+            <div class="modal-body">
+                <div class="handwriting">
+                    <p>My respected Aditi Didi,</p>
+                    <br>
+                    <p>This small note comes from the deepest corner of my heart.</p>
+                    <p>You have been more than just a tuition teacher to me. You've been my guide, my support system, and my didi in every sense.</p>
+                    <p>I will forever cherish the lessons you taught me - not just in Science and Maths, but in perseverance, patience, and believing in myself.</p>
+                    <p>Thank you for everything you've done for me. I'm sorry I never got to gift you on your birthdays or Teachers' Day, but I hope this heartfelt tribute makes up for it in some small way.</p>
+                    <br>
+                    <p>With all my respect and admiration,</p>
+                    <p>Your forever student</p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="open-second-modal" id="openSecondModal">
+                        <i class="fas fa-book-open"></i> One More Special Request, Didi
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn" id="closeFirstModal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Modal -->
+    <div class="modal" id="secondModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>A Humble Request, Didi <i class="fas fa-hands-praying"></i></h2>
+            </div>
+            <div class="modal-body">
+                <div class="handwriting">
+                    <p>My respected Aditi Didi,</p>
+                    <br>
+                    <p>As I stand at the threshold of 11th grade, my heart feels heavy knowing I might not have you as my teacher anymore.</p>
+                    <p>You've been the reason I understood complex concepts, the reason I started enjoying subjects I once feared.</p>
+                    <p>I know I'm moving to a new class, and you have new students to guide, but I have one humble request...</p>
+                    <br>
+                    <p style="color: #4b6cb7; font-weight: bold; text-align: center; font-size: 2rem;">
+                        Could you please teach me even a single subject in 11th?<br>
+                        Even if it's just for one hour a day?
+                    </p>
+                    <br>
+                    <p>I promise to be the most dedicated student. I'll do anything to continue learning from you.</p>
+                    <p>You've shaped my understanding in ways no other teacher has. Without your guidance, I fear I might lose my way.</p>
+                    <br>
+                    <p>With hopeful heart and folded hands,</p>
+                    <p>Your student who desperately wants to keep learning from you</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn-2" id="closeSecondModal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Modal -->
+    <div class="modal" id="achievementModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-trophy"></i> Didi's Achievement Awards</h2>
+            </div>
+            <div class="modal-body">
+                <h3 class="achievement-title">Awards & Recognitions</h3>
+                <p class="achievement-subtitle">Presented to Aditi Didi for exceptional dedication, teaching excellence, and being an inspiration to all students</p>
+                
+                <div class="awards-container">
+                    <div class="award-card award-1">
+                        <div class="award-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4 class="award-title">Best Tuition Teacher Award</h4>
+                        <p class="award-desc">For exceptional teaching and creating brilliant minds who excel in academics and beyond.</p>
+                    </div>
+                    
+                    <div class="award-card award-2">
+                        <div class="award-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4 class="award-title">Best Didi Award</h4>
+                        <p class="award-desc">For becoming not just a tuition teacher but a real didi who cares, guides, and supports like family.</p>
+                    </div>
+                    
+                    <div class="award-card award-3">
+                        <div class="award-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h4 class="award-title">Best Manageable Award</h4>
+                        <p class="award-desc">For expertly managing your own studies alongside teaching us - a true example of dedication and time management.</p>
+                    </div>
+                    
+                    <div class="award-card award-4">
+                        <div class="award-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="award-title">Patience & Perseverance Award</h4>
+                        <p class="award-desc">For unwavering patience while explaining difficult concepts repeatedly until every student understands.</p>
+                    </div>
+                    
+                    <div class="award-card award-5">
+                        <div class="award-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="award-title">Academic Excellence Mentor Award</h4>
+                        <p class="award-desc">For guiding students to achieve academic excellence while also building their confidence and character.</p>
+                    </div>
+                    
+                    <div class="award-card award-1">
+                        <div class="award-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="award-title">Student's Favorite Award</h4>
+                        <p class="award-desc">Voted by students as the most loved, respected, and effective teacher who makes learning enjoyable.</p>
+                    </div>
+                </div>
+                
+                <div class="handwriting" style="text-align: center; margin-top: 40px;">
+                    <p>Each of these awards represents the incredible impact you've had on all your students.</p>
+                    <p>You truly deserve every bit of recognition and so much more!</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn-3" id="closeAchievementModal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Heartfelt Request Modal -->
+    <div class="modal final-request-modal" id="finalRequestModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-hands-praying"></i> My Final Heartfelt Plea</h2>
+            </div>
+            <div class="modal-body">
+                <div class="handwriting">
+                    <p>My dearest Aditi Didi,</p>
+                    <br>
+                    <p>I know I've already asked once, but this is my final, most heartfelt request...</p>
+                </div>
+                
+                <div class="plea-container">
+                    <p class="plea-text">I <span class="highlight">cannot imagine</span> studying 11th grade without your guidance.</p>
+                    <p class="plea-text">You have been the <span class="highlight">foundation</span> of my academic success.</p>
+                    <p class="plea-text">You understand how I learn, what confuses me, and how to make things clear.</p>
+                    <p class="plea-text"><span class="highlight">No other teacher</span> has ever connected with my learning style like you have.</p>
+                </div>
+                
+                <div class="handwriting">
+                    <p>If you agree to teach me even ONE subject in 11th, I promise:</p>
+                    
+                    <ul class="promise-list">
+                        <li>I will be the most disciplined and dedicated student</li>
+                        <li>I will complete all assignments without fail</li>
+                        <li>I will adjust to ANY time that works for you</li>
+                        <li>I will make sure you never regret this decision</li>
+                        <li>I will work harder than ever before to make you proud</li>
+                    </ul>
+                    
+                    <p style="text-align: center; font-size: 2rem; color: #4CAF50; margin: 30px 0;">
+                        <i class="fas fa-heart heart"></i> PLEASE SAY YES DIDI <i class="fas fa-heart heart"></i>
+                    </p>
+                    
+                    <p>I know you're busy with your own studies and other students, but even one hour a  day would mean everything to me.</p>
+                    <p>You're not just a teacher to me - you're my Didi, my mentor, and my academic guardian angel.</p>
+                    <br>
+                    <p>With all the hope in my heart,</p>
+                    <p>Your student who will do anything to continue learning from you</p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="final-yes-button" id="finalYesButton">
+                        <i class="fas fa-check-circle"></i> Click if You'll Consider Teaching Me in 11th
+                    </button>
+                    <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">
+                        (This button doesn't commit you, it just shows me you've seen my request)
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn-4" id="closeFinalRequestModal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const splashScreen = document.getElementById('splashScreen');
+        const mainContent = document.getElementById('mainContent');
+        const enterBtn = document.getElementById('enterBtn');
+        const achievementBtn = document.getElementById('achievementBtn');
+        const clickMeBtn = document.getElementById('clickMeBtn');
+        const finalRequestBtn = document.getElementById('finalRequestBtn');
+        const finalYesButton = document.getElementById('finalYesButton');
+        
+        // Modals
+        const firstModal = document.getElementById('firstModal');
+        const secondModal = document.getElementById('secondModal');
+        const achievementModal = document.getElementById('achievementModal');
+        const finalRequestModal = document.getElementById('finalRequestModal');
+        
+        // Close buttons
+        const openSecondModalBtn = document.getElementById('openSecondModal');
+        const closeFirstModal = document.getElementById('closeFirstModal');
+        const closeSecondModal = document.getElementById('closeSecondModal');
+        const closeAchievementModal = document.getElementById('closeAchievementModal');
+        const closeFinalRequestModal = document.getElementById('closeFinalRequestModal');
+        
+        // Containers
+        const nameSection = document.getElementById('nameSection');
+        const poemContainer = document.getElementById('poemContainer');
+
+        // Blowing effect function
+        function createBlowEffect(event, container) {
+            const blow = document.createElement('div');
+            blow.classList.add('blow-effect');
+            
+            const rect = container.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            
+            blow.style.left = x + 'px';
+            blow.style.top = y + 'px';
+            
+            container.appendChild(blow);
+            
+            setTimeout(() => {
+                blow.remove();
+            }, 600);
+        }
+
+        // Green glow effect on hover
+        function addGreenGlow(element) {
+            element.classList.add('green-glow');
+        }
+
+        function removeGreenGlow(element) {
+            element.classList.remove('green-glow');
+        }
+
+        // Enter button - hide splash screen and show main content
+        enterBtn.addEventListener('click', function(e) {
+            createBlowEffect(e, splashScreen);
+            
+            setTimeout(() => {
+                splashScreen.style.opacity = '0';
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    mainContent.style.opacity = '0';
+                    mainContent.style.transition = 'opacity 1s ease';
+                    setTimeout(() => {
+                        mainContent.style.opacity = '1';
+                    }, 100);
+                }, 1000);
+            }, 300);
+        });
+
+        // Achievement button
+        achievementBtn.addEventListener('click', function(e) {
+            createBlowEffect(e, splashScreen);
+            setTimeout(() => {
+                achievementModal.style.display = 'flex';
+            }, 300);
+        });
+
+        // Click Me button - open first modal
+        clickMeBtn.addEventListener('click', function(e) {
+            createBlowEffect(e, document.body);
+            firstModal.style.display = 'flex';
+        });
+
+        // Final Request button
+        finalRequestBtn.addEventListener('click', function(e) {
+            createBlowEffect(e, document.body);
+            finalRequestModal.style.display = 'flex';
+        });
+
+        // Final Yes button - special effect
+        finalYesButton.addEventListener('click', function(e) {
+            createBlowEffect(e, finalRequestModal.querySelector('.modal-body'));
+            
+            // Show celebration message
+            const button = e.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-heart"></i> THANK YOU DIDI! This means everything to me! <i class="fas fa-heart"></i>';
+            button.style.background = 'linear-gradient(to right, #FFD700, #FFA500)';
+            button.style.color = '#333';
+            button.style.fontSize = '1.5rem';
+            button.style.padding = '20px 40px';
+            
+            // Create celebration effect
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.innerHTML = '🎉';
+                    confetti.style.position = 'fixed';
+                    confetti.style.fontSize = Math.random() * 20 + 20 + 'px';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-50px';
+                    confetti.style.zIndex = '9999';
+                    confetti.style.pointerEvents = 'none';
+                    document.body.appendChild(confetti);
+                    
+                    // Animate confetti
+                    const duration = Math.random() * 2 + 2;
+                    confetti.style.transition = `all ${duration}s ease-out`;
+                    
+                    setTimeout(() => {
+                        confetti.style.top = '100vh';
+                        confetti.style.transform = `rotate(${Math.random() * 360}deg) translateX(${Math.random() * 200 - 100}px)`;
+                    }, 10);
+                    
+                    // Remove confetti after animation
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, duration * 1000 + 100);
+                }, i * 100);
+            }
+            
+            // Reset button after 5 seconds
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.background = 'linear-gradient(to right, #4CAF50, #2E7D32)';
+                button.style.color = 'white';
+                button.style.fontSize = '1.3rem';
+                button.style.padding = '15px 40px';
+            }, 5000);
+        });
+
+        // Open second modal button
+        openSecondModalBtn.addEventListener('click', function(e) {
+            createBlowEffect(e, firstModal.querySelector('.modal-body'));
+            firstModal.style.display = 'none';
+            secondModal.style.display = 'flex';
+        });
+
+        // Close modals
+        closeFirstModal.addEventListener('click', function() {
+            firstModal.style.display = 'none';
+        });
+
+        closeSecondModal.addEventListener('click', function() {
+            secondModal.style.display = 'none';
+        });
+
+        closeAchievementModal.addEventListener('click', function() {
+            achievementModal.style.display = 'none';
+        });
+
+        closeFinalRequestModal.addEventListener('click', function() {
+            finalRequestModal.style.display = 'none';
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === firstModal) firstModal.style.display = 'none';
+            if (event.target === secondModal) secondModal.style.display = 'none';
+            if (event.target === achievementModal) achievementModal.style.display = 'none';
+            if (event.target === finalRequestModal) finalRequestModal.style.display = 'none';
+        });
+
+        // Add hover effects to containers
+        nameSection.addEventListener('mouseenter', () => addGreenGlow(nameSection));
+        nameSection.addEventListener('mouseleave', () => removeGreenGlow(nameSection));
+        poemContainer.addEventListener('mouseenter', () => addGreenGlow(poemContainer));
+        poemContainer.addEventListener('mouseleave', () => removeGreenGlow(poemContainer));
+
+        // Add click blow effects to containers
+        nameSection.addEventListener('click', (e) => createBlowEffect(e, nameSection));
+        poemContainer.addEventListener('click', (e) => createBlowEffect(e, poemContainer));
+
+        // Setup after DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Typing effect for splash screen title
+            const splashTitle = document.querySelector('.splash-title');
+            const originalText = splashTitle.textContent;
+            splashTitle.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    splashTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            setTimeout(typeWriter, 500);
+            
+            // Create floating hearts
+            createFloatingHearts();
+        });
+
+        // Function to create floating hearts
+        function createFloatingHearts() {
+            const colors = ['#ff7e5f', '#4b6cb7', '#ff4757', '#4CAF50', '#FFD700'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.style.position = 'fixed';
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                heart.style.opacity = '0.7';
+                heart.style.zIndex = '-1';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                document.body.appendChild(heart);
+                
+                animateHeart(heart);
+            }
+        }
+
+        // Function to animate hearts
+        function animateHeart(heart) {
+            let x = parseFloat(heart.style.left);
+            let y = parseFloat(heart.style.top);
+            let xSpeed = (Math.random() - 0.5) * 0.5;
+            let ySpeed = Math.random() * 0.5 + 0.2;
+            
+            function moveHeart() {
+                x += xSpeed;
+                y -= ySpeed;
+                
+                if (x > 100 || x < -10 || y < -10) {
+                    x = Math.random() * 100;
+                    y = 100;
+                }
+                
+                heart.style.left = x + 'vw';
+                heart.style.top = y + 'vh';
+                
+                requestAnimationFrame(moveHeart);
+            }
+            
+            moveHeart();
+        }
+
+        // Add blow effect to buttons on hover
+        const modalButtons = [clickMeBtn, openSecondModalBtn, achievementBtn, finalRequestBtn, finalYesButton];
+        modalButtons.forEach(button => {
+            if (button) {
+                button.addEventListener('mouseenter', function(e) {
+                    const smallBlow = document.createElement('div');
+                    smallBlow.classList.add('blow-effect');
+                    smallBlow.style.width = '10px';
+                    smallBlow.style.height = '10px';
+                    smallBlow.style.background = 'rgba(76, 175, 80, 0.5)';
+                    
+                    const rect = button.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    smallBlow.style.left = x + 'px';
+                    smallBlow.style.top = y + 'px';
+                    
+                    button.appendChild(smallBlow);
+                    
+                    setTimeout(() => {
+                        smallBlow.remove();
+                    }, 400);
+                });
+            }
+        });
+    </script>
+</body>
+  </html>
